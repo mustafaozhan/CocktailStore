@@ -9,6 +9,11 @@ import mustafaozhan.github.com.cocktailstore.R
 import mustafaozhan.github.com.cocktailstore.ui.adapters.MyViewPagerAdapter
 import mustafaozhan.github.com.cocktailstore.ui.fragments.AlcoholicFragment
 import mustafaozhan.github.com.cocktailstore.ui.fragments.NonAlcoholicFragment
+import android.content.Intent
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +41,25 @@ class MainActivity : AppCompatActivity() {
 
         viewPager.addOnPageChangeListener(adapter)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            R.id.settings -> {
+
+            }
+
+            else -> {
+            }
+        }
+
+        return true
     }
 
 

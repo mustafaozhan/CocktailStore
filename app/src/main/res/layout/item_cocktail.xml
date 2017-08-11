@@ -16,9 +16,10 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:padding="2sp"
                 android:id="@+id/mImgCocktail"
-                android:layout_width="60sp"
-                android:layout_height="60sp" />
+                android:layout_width="50sp"
+                android:layout_height="50sp" />
 
             <TextView
                 android:id="@+id/mTxtName"

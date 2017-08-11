@@ -17,8 +17,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import mustafaozhan.github.com.cocktailstore.rest.ApiInterface
 import mustafaozhan.github.com.cocktailstore.ui.adapters.MyCocktailAdapter
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+
 
 /**
  * Created by Mustafa Ozhan on 8/11/17 at 2:33 PM on Arch Linux.
