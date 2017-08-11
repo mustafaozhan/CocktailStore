@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         adapter.addFrag(AlcoholicFragment(), "Alcoholic")
         adapter.addFrag(NonAlcoholicFragment(), "Non Alcoholic")
 
+
         viewPager.adapter = adapter
 
         viewPager.addOnPageChangeListener(adapter)
