@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.fragment_alcoholic.*
 import mustafaozhan.github.com.cocktailstore.R
-import mustafaozhan.github.com.cocktailstore.model.Drink
 import mustafaozhan.github.com.cocktailstore.model.ResponseModel
 import mustafaozhan.github.com.cocktailstore.rest.ApiClient
 import retrofit2.Call

@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import kotlinx.android.synthetic.main.fragment_alcoholic.*
 import kotlinx.android.synthetic.main.fragment_non_alcoholic.*
 import mustafaozhan.github.com.cocktailstore.R
 import mustafaozhan.github.com.cocktailstore.model.ResponseModel
