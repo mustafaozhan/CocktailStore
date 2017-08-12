@@ -7,10 +7,10 @@
     tools:context="mustafaozhan.github.com.cocktailstore.ui.activities.MainActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:id="@+id/appBarLayout">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/myToolbar"
@@ -18,9 +18,18 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:elevation="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:text="Alcoholic Cocktails" />
 
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        </android.support.v7.widget.Toolbar>
         <!--app:layout_scrollFlags="scroll|enterAlways"-->
         <android.support.design.widget.TabLayout
             android:id="@+id/myTabLayout"
@@ -36,7 +45,7 @@
         android:id="@+id/myViewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_below="@+id/appBarLayout" />
+        android:layout_below="@+id/appBarLayout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </RelativeLayout>

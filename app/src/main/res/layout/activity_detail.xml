@@ -30,8 +30,8 @@
             android:layout_centerHorizontal="true"
             app:border_width="1sp"
             app:border_color="@color/colorAccent"
-            android:layout_width="240sp"
-            android:layout_height="240sp"
+            android:layout_width="200sp"
+            android:layout_height="200sp"
             android:paddingTop="10sp" />
     </RelativeLayout>
     <TextView

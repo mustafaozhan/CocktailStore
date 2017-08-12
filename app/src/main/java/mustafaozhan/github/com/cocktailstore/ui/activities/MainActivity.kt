@@ -10,58 +10,63 @@ import mustafaozhan.github.com.cocktailstore.ui.adapters.MyViewPagerAdapter
 import mustafaozhan.github.com.cocktailstore.ui.fragments.AlcoholicFragment
 import mustafaozhan.github.com.cocktailstore.ui.fragments.NonAlcoholicFragment
 import android.content.Intent
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import mustafaozhan.github.com.cocktailstore.ui.fragments.SearchByFragment
 
 
 class MainActivity : AppCompatActivity() {
 
 
+    private val tabIcons = intArrayOf(R.drawable.alcohol, R.drawable.search, R.drawable.non_alcohol)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-      init()
+        init()
+
+
+        myViewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            }
+
+            override fun onPageSelected(position: Int) {
+                when (position) {
+                    0 -> toolbar_title.text = "Alcoholic Cocktails"
+                    1 -> toolbar_title.text = "Search Cocktails"
+                    2 -> toolbar_title.text = "Non Alcoholic Cocktails"
+                }
+            }
+
+        })
 
 
     }
+
     private fun init() {
-        setSupportActionBar(myToolbar)
+        //setSupportActionBar(myToolbar)
+
         setupViewPager(myViewpager)
         myTabLayout.setupWithViewPager(myViewpager)
+        setupTabIcons();
+    }
+
+    private fun setupTabIcons() {
+        myTabLayout.getTabAt(0)?.setIcon(tabIcons[0])
+        myTabLayout.getTabAt(1)?.setIcon(tabIcons[1])
+        myTabLayout.getTabAt(2)?.setIcon(tabIcons[2])
+
     }
 
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = MyViewPagerAdapter(supportFragmentManager)
-        adapter.addFrag(AlcoholicFragment(), "Alcoholic")
-        adapter.addFrag(NonAlcoholicFragment(), "Non Alcoholic")
-
-
+        adapter.addFrag(AlcoholicFragment(), "")
+        adapter.addFrag(SearchByFragment(), "")
+        adapter.addFrag(NonAlcoholicFragment(), "")
         viewPager.adapter = adapter
 
-        viewPager.addOnPageChangeListener(adapter)
 
     }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.getItemId()) {
-            R.id.settings -> {
-
-            }
-
-            else -> {
-            }
-        }
-
-        return true
-    }
-
 
 
 }
