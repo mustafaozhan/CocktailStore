@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     tools:context="mustafaozhan.github.com.cocktailstore.ui.activities.DetailActivity">
 
@@ -18,48 +19,53 @@
         app:titleTextColor="@color/white" />
 
     <RelativeLayout
-        android:paddingTop="10sp"
         android:id="@+id/myRelativeLayoutDetailedActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/mToolbarDetailActivity"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/mToolbarDetailActivity">
+        android:paddingTop="10sp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/mImgCocktailDetails"
-            android:layout_centerHorizontal="true"
-            app:border_width="1sp"
-            app:border_color="@color/colorAccent"
             android:layout_width="200sp"
             android:layout_height="200sp"
-            android:paddingTop="10sp" />
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10sp"
+            app:border_color="@color/colorAccent"
+            app:border_width="1sp" />
     </RelativeLayout>
+
     <TextView
         android:id="@+id/mTxtCocktailName"
-        android:padding="5sp"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-android:gravity="center"
-        android:textColor="@color/blue_grey_800"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/myRelativeLayoutDetailedActivity" />
-    <TextView
-        android:id="@+id/mTxtInstructions"
+        android:layout_below="@+id/myRelativeLayoutDetailedActivity"
         android:gravity="center"
         android:padding="5sp"
-        android:textColor="@color/blue_grey_800"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/blue_grey_800" />
+
+    <TextView
+        android:id="@+id/mTxtInstructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/mTxtCocktailName" />
+        android:layout_below="@+id/mTxtCocktailName"
+        android:gravity="center"
+        android:padding="5sp"
+        android:textColor="@color/blue_grey_800" />
 
     <View
+
         android:id="@+id/v"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:layout_below="@+id/mTxtInstructions"
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimary" />

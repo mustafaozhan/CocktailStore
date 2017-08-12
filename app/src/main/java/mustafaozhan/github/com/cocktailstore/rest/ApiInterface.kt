@@ -14,12 +14,18 @@ import retrofit2.http.Query
 interface ApiInterface {
     @GET("filter.php?a=Alcoholic")
     fun getAlcoholic(): Call<ResponseModel>
+
     @GET("filter.php?a=Non_Alcoholic")
     fun getNonAlcoholic(): Call<ResponseModel>
+
     @GET("lookup.php")
-    fun getById(@Query("i")id:String):Call<DetailedResponseModel>
+    fun getById(@Query("i") id: String): Call<DetailedResponseModel>
 
+    @GET("search.php")
+    fun getByName(@Query("s") name: String): Call<ResponseModel>
 
+    @GET("filter.php")
+    fun getByIngredient(@Query("i") name: String): Call<ResponseModel>
 
 
 }

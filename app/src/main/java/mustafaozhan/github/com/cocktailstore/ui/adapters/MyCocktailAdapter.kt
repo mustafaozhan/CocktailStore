@@ -14,7 +14,7 @@ import mustafaozhan.github.com.cocktailstore.ui.activities.DetailActivity
 /**
  * Created by Mustafa Ozhan on 8/11/17 at 11:15 PM on Arch Linux.
  */
-class MyCocktailAdapter(val cocktailList: List<Drink>) :
+class MyCocktailAdapter(var cocktailList: List<Drink>?) :
         RecyclerView.Adapter<MyCocktailAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,11 +24,14 @@ class MyCocktailAdapter(val cocktailList: List<Drink>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindCocktail(cocktailList[position])
+        holder.bindCocktail(cocktailList!![position])
 
     }
+    fun clearAdapter(){
+        cocktailList=null
+    }
 
-    override fun getItemCount() = cocktailList.size
+    override fun getItemCount() = cocktailList!!.size
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

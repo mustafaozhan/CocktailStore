@@ -92,7 +92,7 @@ class DetailActivity : AppCompatActivity() {
 
 
 
-                myRecyclerViewRecipes.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager?
+                myRecyclerViewRecipes.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
                 val adapter = MyRecipeAdapter(recipeList)
                 myRecyclerViewRecipes.adapter = adapter
                 // mProgressBarAlcoholic.visibility = View.GONE

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/myRelativeLayoutSearchBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10sp">
+
+
+            <EditText
+                android:id="@+id/mETxtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/mSpinner"
+                android:layout_toStartOf="@+id/mSpinner" />
+
+            <Spinner
+                android:id="@+id/mSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/mBtnSearch"
+                android:layout_marginTop="11dp"
+                android:layout_toLeftOf="@+id/mBtnSearch"
+                android:layout_toStartOf="@+id/mBtnSearch">
+
+            </Spinner>
+
+            <Button
+                android:id="@+id/mBtnSearch"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="Search" />
+
+
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/mProgressBarSearchBy"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_below="@+id/myRelativeLayoutSearchBy"
+            android:layout_centerHorizontal="true" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/myRecyclerViewSearchBy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/myRelativeLayoutSearchBy">
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+</FrameLayout>

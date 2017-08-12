@@ -16,7 +16,7 @@ import mustafaozhan.github.com.cocktailstore.ui.fragments.SearchByFragment
 class MainActivity : AppCompatActivity() {
 
 
-    private val tabIcons = intArrayOf(R.drawable.alcohol, R.drawable.search, R.drawable.non_alcohol)
+    private val tabIcons = intArrayOf(R.drawable.search, R.drawable.alcohol, R.drawable.non_alcohol)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {
                 when (position) {
-                    0 -> toolbar_title.text = "Alcoholic Cocktails"
-                    1 -> toolbar_title.text = "Search Cocktails"
+                    0 -> toolbar_title.text = "Search Cocktails"
+                    1 -> toolbar_title.text = "Alcoholic Cocktails"
                     2 -> toolbar_title.text = "Non Alcoholic Cocktails"
                 }
             }
@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = MyViewPagerAdapter(supportFragmentManager)
-        adapter.addFrag(AlcoholicFragment(), "")
         adapter.addFrag(SearchByFragment(), "")
+        adapter.addFrag(AlcoholicFragment(), "")
         adapter.addFrag(NonAlcoholicFragment(), "")
         viewPager.adapter = adapter
 
