@@ -20,4 +20,6 @@ interface ApiInterface {
     fun getById(@Query("i")id:String):Call<DetailedResponseModel>
 
 
+
+
 }
