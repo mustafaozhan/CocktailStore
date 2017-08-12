@@ -56,7 +56,7 @@ class SearchByFragment : Fragment() {
 
             when (mSpinner.selectedItem) {
                 "By Name" -> {
-                    val myCall = apiService.getByName(mETxtSearch.text.toString())
+                    val myCall = apiService.getInCocktailsByName(mETxtSearch.text.toString())
                     myCall.enqueue(object : Callback<ResponseModel> {
                         override fun onResponse(call: Call<ResponseModel>?, response: Response<ResponseModel>?) {
                             myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
@@ -82,7 +82,7 @@ class SearchByFragment : Fragment() {
                 "By Ingredient" -> {
 
 
-                    val myCall = apiService.getByIngredient(mETxtSearch.text.toString())
+                    val myCall = apiService.getCocktailsByIngredient(mETxtSearch.text.toString())
                     myCall.enqueue(object : Callback<ResponseModel> {
                         override fun onResponse(call: Call<ResponseModel>?, response: Response<ResponseModel>?) {
                             myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)

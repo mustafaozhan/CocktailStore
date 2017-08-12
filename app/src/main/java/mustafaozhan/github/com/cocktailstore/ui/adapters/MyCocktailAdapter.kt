@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_row.view.*
 import mustafaozhan.github.com.cocktailstore.R
 import mustafaozhan.github.com.cocktailstore.model.Drink
-import mustafaozhan.github.com.cocktailstore.ui.activities.DetailActivity
+import mustafaozhan.github.com.cocktailstore.ui.activities.CocktailsDetailActivity
 
 /**
  * Created by Mustafa Ozhan on 8/11/17 at 11:15 PM on Arch Linux.
@@ -52,7 +52,7 @@ class MyCocktailAdapter(var cocktailList: List<Drink>?) :
                 itemView.mImgCocktail.setImageResource(R.drawable.no_image)
 
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, DetailActivity::class.java)
+                val intent = Intent(itemView.context, CocktailsDetailActivity::class.java)
 
                 intent.putExtra("cocktail",cocktail)
                 itemView.context.startActivity(intent)

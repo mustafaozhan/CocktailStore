@@ -2,6 +2,7 @@ package mustafaozhan.github.com.cocktailstore.rest
 
 import mustafaozhan.github.com.cocktailstore.model.DetailedCocktail
 import mustafaozhan.github.com.cocktailstore.model.DetailedResponseModel
+import mustafaozhan.github.com.cocktailstore.model.ResponseIngredinets
 import mustafaozhan.github.com.cocktailstore.model.ResponseModel
 import retrofit2.Call
 import retrofit2.http.GET
@@ -22,10 +23,13 @@ interface ApiInterface {
     fun getById(@Query("i") id: String): Call<DetailedResponseModel>
 
     @GET("search.php")
-    fun getByName(@Query("s") name: String): Call<ResponseModel>
+    fun getInCocktailsByName(@Query("s") name: String): Call<ResponseModel>
 
     @GET("filter.php")
-    fun getByIngredient(@Query("i") name: String): Call<ResponseModel>
+    fun getCocktailsByIngredient(@Query("i") name: String): Call<ResponseModel>
+
+    @GET("search.php")
+    fun getIngredientByName(@Query("i") name: String): Call<ResponseIngredinets>
 
 
 }

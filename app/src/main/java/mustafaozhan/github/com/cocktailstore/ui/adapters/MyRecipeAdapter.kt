@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_row.view.*
 import mustafaozhan.github.com.cocktailstore.R
 import mustafaozhan.github.com.cocktailstore.model.Recipe
+import mustafaozhan.github.com.cocktailstore.ui.activities.CocktailsDetailActivity
+import mustafaozhan.github.com.cocktailstore.ui.activities.IngredientDetailActivity
 import java.lang.reflect.Array
 
 
@@ -54,6 +56,13 @@ class MyRecipeAdapter(val recipeList: ArrayList<Recipe>) :
                 itemView.mImgCocktail.setImageResource(R.drawable.no_image)
 
 
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, IngredientDetailActivity::class.java)
+
+                intent.putExtra("ingredient",recipe.ingredient)
+                itemView.context.startActivity(intent)
+            }
 
 
         }
