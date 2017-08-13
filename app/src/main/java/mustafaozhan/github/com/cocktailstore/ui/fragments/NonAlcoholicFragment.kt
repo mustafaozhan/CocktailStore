@@ -3,6 +3,7 @@ package mustafaozhan.github.com.cocktailstore.ui.fragments
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +43,7 @@ class NonAlcoholicFragment : Fragment() {
         myCall.enqueue(object : Callback<ResponseModel> {
 
             override fun onResponse(call: Call<ResponseModel>?, response: Response<ResponseModel>?) {
-                myRecyclerViewNonAlcoholic.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+                myRecyclerViewNonAlcoholic.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
                 val adapter = MyCocktailAdapter(response!!.body()!!.drinks!!)
                 myRecyclerViewNonAlcoholic.adapter = adapter
                 mProgressBarNonAlcoholic.visibility = View.GONE

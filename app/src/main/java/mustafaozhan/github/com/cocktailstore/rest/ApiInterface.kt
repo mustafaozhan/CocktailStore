@@ -31,5 +31,8 @@ interface ApiInterface {
     @GET("search.php")
     fun getIngredientByName(@Query("i") name: String): Call<ResponseIngredinets>
 
+    @GET("random.php")
+    fun getRandomCocktail(): Call<DetailedResponseModel>
+
 
 }

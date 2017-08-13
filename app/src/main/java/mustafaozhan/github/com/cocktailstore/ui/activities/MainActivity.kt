@@ -10,13 +10,14 @@ import mustafaozhan.github.com.cocktailstore.ui.adapters.MyViewPagerAdapter
 import mustafaozhan.github.com.cocktailstore.ui.fragments.AlcoholicFragment
 import mustafaozhan.github.com.cocktailstore.ui.fragments.NonAlcoholicFragment
 import android.content.Intent
+import mustafaozhan.github.com.cocktailstore.ui.fragments.RandomCocktailFragment
 import mustafaozhan.github.com.cocktailstore.ui.fragments.SearchByFragment
 
 
 class MainActivity : AppCompatActivity() {
 
 
-    private val tabIcons = intArrayOf(R.drawable.search, R.drawable.alcohol, R.drawable.non_alcohol)
+    private val tabIcons = intArrayOf(R.drawable.random, R.drawable.alcohol, R.drawable.non_alcohol, R.drawable.search)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,9 +33,10 @@ class MainActivity : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {
                 when (position) {
-                    0 -> toolbar_title.text = "Search Cocktails"
+                    0 -> toolbar_title.text = "Random Cocktails"
                     1 -> toolbar_title.text = "Alcoholic Cocktails"
                     2 -> toolbar_title.text = "Non Alcoholic Cocktails"
+                    3 -> toolbar_title.text = "Search Cocktails"
                 }
             }
 
@@ -55,14 +57,17 @@ class MainActivity : AppCompatActivity() {
         myTabLayout.getTabAt(0)?.setIcon(tabIcons[0])
         myTabLayout.getTabAt(1)?.setIcon(tabIcons[1])
         myTabLayout.getTabAt(2)?.setIcon(tabIcons[2])
+        myTabLayout.getTabAt(3)?.setIcon(tabIcons[3])
 
     }
 
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = MyViewPagerAdapter(supportFragmentManager)
-        adapter.addFrag(SearchByFragment(), "")
+        adapter.addFrag(RandomCocktailFragment(), "")
         adapter.addFrag(AlcoholicFragment(), "")
         adapter.addFrag(NonAlcoholicFragment(), "")
+        adapter.addFrag(SearchByFragment(), "")
+
         viewPager.adapter = adapter
 
 

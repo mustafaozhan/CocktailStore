@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import mustafaozhan.github.com.cocktailstore.rest.ApiClient
 import mustafaozhan.github.com.cocktailstore.rest.ApiInterface
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.text.Editable
 import android.text.TextWatcher
@@ -100,7 +101,7 @@ class SearchByFragment : Fragment() {
                             val myCall = apiService.getInCocktailsByName(text)
                             myCall.enqueue(object : Callback<DetailedResponseModel> {
                                 override fun onResponse(call: Call<DetailedResponseModel>?, response: Response<DetailedResponseModel>?) {
-                                    myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+                                    myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
                                     try {
 
                                         val mCocktailAdapter = MyDetailedCocktailAdapter(response!!.body()!!.drinks!!)
