@@ -52,7 +52,7 @@ class MyDetailedCocktailAdapter(var cocktailList: List<DetailedCocktail>?) :
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, CocktailsDetailActivity::class.java)
 
-                intent.putExtra("cocktail",cocktail as Drink)
+                intent.putExtra("cocktail",cocktail as Drink)//bec cocktail details waiting for a drink object
                 itemView.context.startActivity(intent)
             }
         }

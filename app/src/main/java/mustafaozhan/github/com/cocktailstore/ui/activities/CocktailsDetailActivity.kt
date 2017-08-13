@@ -73,7 +73,7 @@ class CocktailsDetailActivity : AppCompatActivity() {
 
                 var size = recipeList.size
                 var i = 0
-                while (true) {
+                while (true) {//deleting empty ingredients and measures inside list
                     if (recipeList[i].ingredient == "") {
                         recipeList.removeAt(i)
                         i--
@@ -90,7 +90,6 @@ class CocktailsDetailActivity : AppCompatActivity() {
                 myRecyclerViewRecipes.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
                 val adapter = MyRecipeAdapter(recipeList)
                 myRecyclerViewRecipes.adapter = adapter
-                // mProgressBarAlcoholic.visibility = View.GONE
 
 
             }

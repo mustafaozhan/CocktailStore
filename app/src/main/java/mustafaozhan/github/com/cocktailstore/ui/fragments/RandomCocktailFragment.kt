@@ -126,6 +126,7 @@ class RandomCocktailFragment : Fragment() {
                     // mProgressBarAlcoholic.visibility = View.GONE
                 } catch (e: Exception) {
                     Log.w("Warning:", "Random return null")
+                    // in Api it return 2 times null
                     getRandomCocktail()
                 }
 

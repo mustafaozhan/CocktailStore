@@ -46,11 +46,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        //setSupportActionBar(myToolbar)
-
         setupViewPager(myViewpager)
         myTabLayout.setupWithViewPager(myViewpager)
-        setupTabIcons();
+        setupTabIcons()
     }
 
     private fun setupTabIcons() {

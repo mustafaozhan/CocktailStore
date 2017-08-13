@@ -29,6 +29,7 @@ import retrofit2.Response
 import mustafaozhan.github.com.cocktailstore.ui.adapters.MyCocktailAdapter
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import kotlinx.android.synthetic.main.fragment_search_by.view.*
 import mustafaozhan.github.com.cocktailstore.model.DetailedCocktail
 import mustafaozhan.github.com.cocktailstore.model.DetailedResponseModel
 import mustafaozhan.github.com.cocktailstore.ui.adapters.MyDetailedCocktailAdapter
@@ -60,19 +61,6 @@ class SearchByFragment : Fragment() {
         mSpinner.adapter = dataAdapterBy
 
         search()
-//        mSpinner.onItemSelectedListener = object : OnItemSelectedListener {
-//            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
-//                val temp = mETxtSearch.text//when spinner change notifying observable
-//                mETxtSearch.text = null
-//                // mETxtSearch.text=temp
-//                mETxtSearch.append(temp)
-//            }
-//
-//            override fun onNothingSelected(parentView: AdapterView<*>) {
-//
-//            }
-//
-//        }
 
 
     }
@@ -110,19 +98,32 @@ class SearchByFragment : Fragment() {
                                     } catch (e: Exception) {
                                         Log.w("Warning", "No Cocktail founded")
                                         Toast.makeText(context, "No Cocktail founded", Toast.LENGTH_SHORT).show()
-                                        val emptyList = ArrayList<DetailedCocktail>()
-                                        val mCocktailAdapter = MyDetailedCocktailAdapter(emptyList)
-                                        myRecyclerViewSearchBy.adapter = mCocktailAdapter
+                                        try {
+
+
+                                            val emptyList = ArrayList<DetailedCocktail>()
+                                            val mCocktailAdapter = MyDetailedCocktailAdapter(emptyList)
+                                            myRecyclerViewSearchBy.adapter = mCocktailAdapter
+                                            mProgressBarSearchBy.visibility = View.GONE
+                                        } catch (e: Exception) {
+                                            Log.e("Error:", "java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
+                                            //it is happening only if i switch tabs so quick and at least 20-30 times non-stop when i was testing i realized
+                                        }
                                     }
-                                    mProgressBarSearchBy.visibility = View.GONE
+
                                 }
 
                                 override fun onFailure(call: Call<DetailedResponseModel>?, t: Throwable?) {
                                     Log.w("Warning", "No Cocktail founded")
                                     Toast.makeText(context, "No Cocktail founded", Toast.LENGTH_SHORT).show()
-                                    val emptyList = ArrayList<DetailedCocktail>()
-                                    val mCocktailAdapter = MyDetailedCocktailAdapter(emptyList)
-                                    myRecyclerViewSearchBy.adapter = mCocktailAdapter
+                                    try {
+                                        val emptyList = ArrayList<DetailedCocktail>()
+                                        val mCocktailAdapter = MyDetailedCocktailAdapter(emptyList)
+                                        myRecyclerViewSearchBy.adapter = mCocktailAdapter
+                                    } catch (e: Exception) {
+                                        Log.e("Error:", "java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
+                                        //it is happening only if i switch tabs so quick and at least 20-30 times non-stop when i was testing i realized
+                                    }
                                 }
                             })
 
@@ -141,11 +142,20 @@ class SearchByFragment : Fragment() {
                                     } catch (e: Exception) {
                                         Log.w("Warning", "No Cocktail founded")
                                         Toast.makeText(context, "No Cocktail founded", Toast.LENGTH_SHORT).show()
-                                        val emptyList = ArrayList<Drink>()
-                                        val mCocktailAdapter = MyCocktailAdapter(emptyList)
-                                        myRecyclerViewSearchBy.adapter = mCocktailAdapter
+
+                                        try {
+
+
+                                            val emptyList = ArrayList<Drink>()
+                                            val mCocktailAdapter = MyCocktailAdapter(emptyList)
+                                            myRecyclerViewSearchBy.adapter = mCocktailAdapter
+                                            mProgressBarSearchBy.visibility = View.GONE
+                                        } catch (e: Exception) {
+                                            Log.e("Error:", "java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
+                                            //it is happening only if i switch tabs so quick and at least 20-30 times non-stop when i was testing i realized
+                                        }
                                     }
-                                    mProgressBarSearchBy.visibility = View.GONE
+
                                 }
 
                                 override fun onFailure(call: Call<ResponseModel>?, t: Throwable?) {

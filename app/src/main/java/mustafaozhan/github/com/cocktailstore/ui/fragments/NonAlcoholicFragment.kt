@@ -28,11 +28,9 @@ class NonAlcoholicFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val fragmentView = inflater!!.inflate(R.layout.fragment_non_alcoholic, container, false)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-//        bindViews(fragmentView)
+
         return fragmentView
     }
-
-//    private fun bindViews(view: View) {}
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -53,7 +51,7 @@ class NonAlcoholicFragment : Fragment() {
                   mProgressBarNonAlcoholic.visibility = View.GONE
               }catch (e:Exception){
                   Log.e("Error:","java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
-                  //it is happening only if i switch tabs so quick and at least 20-30 times non-stop
+                  //it is happening only if i switch tabs so quick and at least 20-30 times non-stop when i was testing i realized
               }
             }
 
