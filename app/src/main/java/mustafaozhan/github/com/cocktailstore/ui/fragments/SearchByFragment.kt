@@ -1,5 +1,6 @@
 package mustafaozhan.github.com.cocktailstore.ui.fragments
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -41,6 +42,7 @@ class SearchByFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val fragmentView = inflater!!.inflate(R.layout.fragment_search_by, container, false)
+        activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 //        bindViews(fragmentView)
         return fragmentView
     }
@@ -58,20 +60,19 @@ class SearchByFragment : Fragment() {
         mSpinner.adapter = dataAdapterBy
 
         search()
-        mSpinner.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
-                val temp=mETxtSearch.text//when spinner change notifying observable
-                mETxtSearch.text=null
-                mETxtSearch.text=temp
-            }
-
-            override fun onNothingSelected(parentView: AdapterView<*>) {
-
-            }
-
-        }
-
-
+//        mSpinner.onItemSelectedListener = object : OnItemSelectedListener {
+//            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
+//                val temp = mETxtSearch.text//when spinner change notifying observable
+//                mETxtSearch.text = null
+//                // mETxtSearch.text=temp
+//                mETxtSearch.append(temp)
+//            }
+//
+//            override fun onNothingSelected(parentView: AdapterView<*>) {
+//
+//            }
+//
+//        }
 
 
     }
@@ -93,7 +94,6 @@ class SearchByFragment : Fragment() {
                     text ->
 
 
-
                     mProgressBarSearchBy.progress
 
                     when (mSpinner.selectedItem) {
@@ -101,8 +101,9 @@ class SearchByFragment : Fragment() {
                             val myCall = apiService.getInCocktailsByName(text)
                             myCall.enqueue(object : Callback<DetailedResponseModel> {
                                 override fun onResponse(call: Call<DetailedResponseModel>?, response: Response<DetailedResponseModel>?) {
-                                    myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
                                     try {
+                                        myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
+
 
                                         val mCocktailAdapter = MyDetailedCocktailAdapter(response!!.body()!!.drinks!!)
                                         myRecyclerViewSearchBy.adapter = mCocktailAdapter
@@ -132,8 +133,8 @@ class SearchByFragment : Fragment() {
                             val myCall = apiService.getCocktailsByIngredient(text)
                             myCall.enqueue(object : Callback<ResponseModel> {
                                 override fun onResponse(call: Call<ResponseModel>?, response: Response<ResponseModel>?) {
-                                    myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
                                     try {
+                                        myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
 
                                         val mCocktailAdapter = MyCocktailAdapter(response!!.body()!!.drinks!!)
                                         myRecyclerViewSearchBy.adapter = mCocktailAdapter

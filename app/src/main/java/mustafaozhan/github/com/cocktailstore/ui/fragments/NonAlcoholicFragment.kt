@@ -1,9 +1,11 @@
 package mustafaozhan.github.com.cocktailstore.ui.fragments
 
+import android.content.pm.ActivityInfo
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +27,7 @@ class NonAlcoholicFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val fragmentView = inflater!!.inflate(R.layout.fragment_non_alcoholic, container, false)
+        activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 //        bindViews(fragmentView)
         return fragmentView
     }
@@ -43,11 +46,15 @@ class NonAlcoholicFragment : Fragment() {
         myCall.enqueue(object : Callback<ResponseModel> {
 
             override fun onResponse(call: Call<ResponseModel>?, response: Response<ResponseModel>?) {
-                myRecyclerViewNonAlcoholic.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
-                val adapter = MyCocktailAdapter(response!!.body()!!.drinks!!)
-                myRecyclerViewNonAlcoholic.adapter = adapter
-                mProgressBarNonAlcoholic.visibility = View.GONE
-
+              try {
+                  myRecyclerViewNonAlcoholic.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
+                  val adapter = MyCocktailAdapter(response!!.body()!!.drinks!!)
+                  myRecyclerViewNonAlcoholic.adapter = adapter
+                  mProgressBarNonAlcoholic.visibility = View.GONE
+              }catch (e:Exception){
+                  Log.e("Error:","java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
+                  //it is happening only if i switch tabs so quick and at least 20-30 times non-stop
+              }
             }
 
             override fun onFailure(call: Call<ResponseModel>?, t: Throwable?) {

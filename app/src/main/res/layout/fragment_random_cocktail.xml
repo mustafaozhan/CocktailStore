@@ -8,20 +8,28 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <Button
+            android:id="@+id/mBtnRandom"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="New Random Cocktail" />
 
         <RelativeLayout
             android:id="@+id/myRelativeLayoutRandomdFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_centerHorizontal="true"
-            android:paddingTop="10sp">
+            android:paddingTop="10sp"
+            android:layout_below="@+id/mBtnRandom"
+            android:layout_centerHorizontal="true">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/mImgCocktailRandomDetails"
-                android:layout_width="200sp"
-                android:layout_height="200sp"
+                android:layout_width="160sp"
+                android:layout_height="160sp"
                 android:layout_centerHorizontal="true"
                 android:paddingTop="10sp"
                 app:border_color="@color/colorAccent"
@@ -66,8 +74,12 @@
             android:id="@+id/myRecyclerViewRandomRecipes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:layout_below="@id/v" />
 
 
+
+
     </RelativeLayout>
+
 </FrameLayout>

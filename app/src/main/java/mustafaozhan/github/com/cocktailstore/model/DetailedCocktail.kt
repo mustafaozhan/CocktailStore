@@ -1,5 +1,7 @@
 package mustafaozhan.github.com.cocktailstore.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -8,14 +10,10 @@ import com.google.gson.annotations.SerializedName
 /**
  * Created by Mustafa Ozhan on 8/12/17 at 2:22 PM on Arch Linux.
  */
-class DetailedCocktail {
+class DetailedCocktail() : Drink(), Parcelable {
 
-    @SerializedName("idDrink")
-    @Expose
-    var idDrink: String? = null
-    @SerializedName("strDrink")
-    @Expose
-    var strDrink: String? = null
+
+
     @SerializedName("strCategory")
     @Expose
     var strCategory: String? = null
@@ -28,9 +26,7 @@ class DetailedCocktail {
     @SerializedName("strInstructions")
     @Expose
     var strInstructions: String? = null
-    @SerializedName("strDrinkThumb")
-    @Expose
-    var strDrinkThumb: Any? = null
+
     @SerializedName("strIngredient1")
     @Expose
     var strIngredient1: String? = null
@@ -124,5 +120,97 @@ class DetailedCocktail {
     @SerializedName("dateModified")
     @Expose
     var dateModified: Any? = null
+
+    constructor(parcel: Parcel) : this() {
+        idDrink = parcel.readString()
+        strDrink = parcel.readString()
+        strCategory = parcel.readString()
+        strAlcoholic = parcel.readString()
+        strGlass = parcel.readString()
+        strInstructions = parcel.readString()
+        strIngredient1 = parcel.readString()
+        strIngredient2 = parcel.readString()
+        strIngredient3 = parcel.readString()
+        strIngredient4 = parcel.readString()
+        strIngredient5 = parcel.readString()
+        strIngredient6 = parcel.readString()
+        strIngredient7 = parcel.readString()
+        strIngredient8 = parcel.readString()
+        strIngredient9 = parcel.readString()
+        strIngredient10 = parcel.readString()
+        strIngredient11 = parcel.readString()
+        strIngredient12 = parcel.readString()
+        strIngredient13 = parcel.readString()
+        strIngredient14 = parcel.readString()
+        strIngredient15 = parcel.readString()
+        strMeasure1 = parcel.readString()
+        strMeasure2 = parcel.readString()
+        strMeasure3 = parcel.readString()
+        strMeasure4 = parcel.readString()
+        strMeasure5 = parcel.readString()
+        strMeasure6 = parcel.readString()
+        strMeasure7 = parcel.readString()
+        strMeasure8 = parcel.readString()
+        strMeasure9 = parcel.readString()
+        strMeasure10 = parcel.readString()
+        strMeasure11 = parcel.readString()
+        strMeasure12 = parcel.readString()
+        strMeasure13 = parcel.readString()
+        strMeasure14 = parcel.readString()
+        strMeasure15 = parcel.readString()
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(idDrink)
+        parcel.writeString(strDrink)
+        parcel.writeString(strCategory)
+        parcel.writeString(strAlcoholic)
+        parcel.writeString(strGlass)
+        parcel.writeString(strInstructions)
+        parcel.writeString(strIngredient1)
+        parcel.writeString(strIngredient2)
+        parcel.writeString(strIngredient3)
+        parcel.writeString(strIngredient4)
+        parcel.writeString(strIngredient5)
+        parcel.writeString(strIngredient6)
+        parcel.writeString(strIngredient7)
+        parcel.writeString(strIngredient8)
+        parcel.writeString(strIngredient9)
+        parcel.writeString(strIngredient10)
+        parcel.writeString(strIngredient11)
+        parcel.writeString(strIngredient12)
+        parcel.writeString(strIngredient13)
+        parcel.writeString(strIngredient14)
+        parcel.writeString(strIngredient15)
+        parcel.writeString(strMeasure1)
+        parcel.writeString(strMeasure2)
+        parcel.writeString(strMeasure3)
+        parcel.writeString(strMeasure4)
+        parcel.writeString(strMeasure5)
+        parcel.writeString(strMeasure6)
+        parcel.writeString(strMeasure7)
+        parcel.writeString(strMeasure8)
+        parcel.writeString(strMeasure9)
+        parcel.writeString(strMeasure10)
+        parcel.writeString(strMeasure11)
+        parcel.writeString(strMeasure12)
+        parcel.writeString(strMeasure13)
+        parcel.writeString(strMeasure14)
+        parcel.writeString(strMeasure15)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<DetailedCocktail> {
+        override fun createFromParcel(parcel: Parcel): DetailedCocktail {
+            return DetailedCocktail(parcel)
+        }
+
+        override fun newArray(size: Int): Array<DetailedCocktail?> {
+            return arrayOfNulls(size)
+        }
+    }
 
 }

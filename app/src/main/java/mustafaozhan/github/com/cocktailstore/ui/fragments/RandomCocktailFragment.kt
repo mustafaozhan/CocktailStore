@@ -1,5 +1,6 @@
 package mustafaozhan.github.com.cocktailstore.ui.fragments
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -34,6 +35,7 @@ class RandomCocktailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val fragmentView = inflater!!.inflate(R.layout.fragment_random_cocktail, container, false)
+        activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 //        bindViews(fragmentView)
         return fragmentView
     }
@@ -43,10 +45,13 @@ class RandomCocktailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        var firstTime = true
 
-        getRandomCocktail()
-
-        mImgCocktailRandomDetails.setOnClickListener { getRandomCocktail() }
+        if (firstTime) {
+            firstTime=false
+            getRandomCocktail()
+        }
+        mBtnRandom.setOnClickListener { getRandomCocktail() }
 
 
     }
@@ -58,71 +63,71 @@ class RandomCocktailFragment : Fragment() {
         myCallRandom.enqueue(object : Callback<DetailedResponseModel> {
 
             override fun onResponse(call: Call<DetailedResponseModel>?, response: Response<DetailedResponseModel>?) {
-                var cocktail=DetailedCocktail()
-               try {
+                var cocktail = DetailedCocktail()
+                try {
 
                     cocktail = response!!.body()!!.drinks!![0]
 
 
-                mTxtRandomCocktailName.text = cocktail.strDrink.toString()
+                    mTxtRandomCocktailName.text = cocktail.strDrink.toString()
 
 
-                if (cocktail.strDrinkThumb != null)
-                    Glide
-                            .with(context)
-                            .load(cocktail.strDrinkThumb)
-                            .thumbnail(Glide
-                                    .with(context)
-                                    .load(cocktail.strDrinkThumb)
-                            )
-                            .into(mImgCocktailRandomDetails)
-                else
-                    mImgCocktailRandomDetails.setImageResource(R.drawable.no_image)
+                    if (cocktail.strDrinkThumb != null)
+                        Glide
+                                .with(context)
+                                .load(cocktail.strDrinkThumb)
+                                .thumbnail(Glide
+                                        .with(context)
+                                        .load(cocktail.strDrinkThumb)
+                                )
+                                .into(mImgCocktailRandomDetails)
+                    else
+                        mImgCocktailRandomDetails.setImageResource(R.drawable.no_image)
 
-                mTxtRandomInformation.text = cocktail.strInstructions
+                    mTxtRandomInformation.text = cocktail.strInstructions
 
-                val recipeList = ArrayList<Recipe>()
+                    val recipeList = ArrayList<Recipe>()
 
-                recipeList.add(Recipe(cocktail.strIngredient1!!, cocktail.strMeasure1!!))
-                recipeList.add(Recipe(cocktail.strIngredient2!!, cocktail.strMeasure2!!))
-                recipeList.add(Recipe(cocktail.strIngredient3!!, cocktail.strMeasure3!!))
-                recipeList.add(Recipe(cocktail.strIngredient4!!, cocktail.strMeasure4!!))
-                recipeList.add(Recipe(cocktail.strIngredient5!!, cocktail.strMeasure5!!))
-                recipeList.add(Recipe(cocktail.strIngredient6!!, cocktail.strMeasure6!!))
-                recipeList.add(Recipe(cocktail.strIngredient7!!, cocktail.strMeasure7!!))
-                recipeList.add(Recipe(cocktail.strIngredient8!!, cocktail.strMeasure8!!))
-                recipeList.add(Recipe(cocktail.strIngredient9!!, cocktail.strMeasure9!!))
-                recipeList.add(Recipe(cocktail.strIngredient10!!, cocktail.strMeasure10!!))
-                recipeList.add(Recipe(cocktail.strIngredient11!!, cocktail.strMeasure11!!))
-                recipeList.add(Recipe(cocktail.strIngredient12!!, cocktail.strMeasure12!!))
-                recipeList.add(Recipe(cocktail.strIngredient13!!, cocktail.strMeasure13!!))
-                recipeList.add(Recipe(cocktail.strIngredient14!!, cocktail.strMeasure14!!))
-                recipeList.add(Recipe(cocktail.strIngredient15!!, cocktail.strMeasure15!!))
+                    recipeList.add(Recipe(cocktail.strIngredient1!!, cocktail.strMeasure1!!))
+                    recipeList.add(Recipe(cocktail.strIngredient2!!, cocktail.strMeasure2!!))
+                    recipeList.add(Recipe(cocktail.strIngredient3!!, cocktail.strMeasure3!!))
+                    recipeList.add(Recipe(cocktail.strIngredient4!!, cocktail.strMeasure4!!))
+                    recipeList.add(Recipe(cocktail.strIngredient5!!, cocktail.strMeasure5!!))
+                    recipeList.add(Recipe(cocktail.strIngredient6!!, cocktail.strMeasure6!!))
+                    recipeList.add(Recipe(cocktail.strIngredient7!!, cocktail.strMeasure7!!))
+                    recipeList.add(Recipe(cocktail.strIngredient8!!, cocktail.strMeasure8!!))
+                    recipeList.add(Recipe(cocktail.strIngredient9!!, cocktail.strMeasure9!!))
+                    recipeList.add(Recipe(cocktail.strIngredient10!!, cocktail.strMeasure10!!))
+                    recipeList.add(Recipe(cocktail.strIngredient11!!, cocktail.strMeasure11!!))
+                    recipeList.add(Recipe(cocktail.strIngredient12!!, cocktail.strMeasure12!!))
+                    recipeList.add(Recipe(cocktail.strIngredient13!!, cocktail.strMeasure13!!))
+                    recipeList.add(Recipe(cocktail.strIngredient14!!, cocktail.strMeasure14!!))
+                    recipeList.add(Recipe(cocktail.strIngredient15!!, cocktail.strMeasure15!!))
 
-                var size = recipeList.size
-                var i = 0
-                while (true) {
-                    if (recipeList[i].ingredient == "") {
-                        recipeList.removeAt(i)
-                        i--
-                        size--
-                    } else
-                        i++
+                    var size = recipeList.size
+                    var i = 0
+                    while (true) {
+                        if (recipeList[i].ingredient == "") {
+                            recipeList.removeAt(i)
+                            i--
+                            size--
+                        } else
+                            i++
 
-                    if (i == size)
-                        break
+                        if (i == size)
+                            break
+                    }
+
+
+
+                    myRecyclerViewRandomRecipes.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
+                    val adapter = MyRecipeAdapter(recipeList)
+                    myRecyclerViewRandomRecipes.adapter = adapter
+                    // mProgressBarAlcoholic.visibility = View.GONE
+                } catch (e: Exception) {
+                    Log.w("Warning:", "Random return null")
+                    getRandomCocktail()
                 }
-
-
-
-                myRecyclerViewRandomRecipes.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)as RecyclerView.LayoutManager
-                val adapter = MyRecipeAdapter(recipeList)
-                myRecyclerViewRandomRecipes.adapter = adapter
-                // mProgressBarAlcoholic.visibility = View.GONE
-               }catch (e:Exception){
-                   Log.w("Warning:","Random return null")
-                   getRandomCocktail()
-               }
 
             }
 
@@ -131,7 +136,6 @@ class RandomCocktailFragment : Fragment() {
             }
         })
 
-        Toast.makeText(context,"Click Cocktail image to get new Random cocktail",Toast.LENGTH_SHORT)
 
     }
 
