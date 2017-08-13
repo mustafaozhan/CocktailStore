@@ -27,22 +27,11 @@
                 android:id="@+id/mSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/mBtnSearch"
-                android:layout_marginTop="11dp"
-                android:layout_toLeftOf="@+id/mBtnSearch"
-                android:layout_toStartOf="@+id/mBtnSearch">
-
-            </Spinner>
-
-            <Button
-                android:id="@+id/mBtnSearch"
-                style="?attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:text="Search" />
+                android:layout_centerVertical="true">
+
+            </Spinner>
 
 
         </RelativeLayout>

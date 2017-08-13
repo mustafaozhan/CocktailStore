@@ -23,7 +23,7 @@ interface ApiInterface {
     fun getById(@Query("i") id: String): Call<DetailedResponseModel>
 
     @GET("search.php")
-    fun getInCocktailsByName(@Query("s") name: String): Call<ResponseModel>
+    fun getInCocktailsByName(@Query("s") name: String): Call<DetailedResponseModel>
 
     @GET("filter.php")
     fun getCocktailsByIngredient(@Query("i") name: String): Call<ResponseModel>

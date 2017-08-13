@@ -8,14 +8,15 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_row.view.*
 import mustafaozhan.github.com.cocktailstore.R
+import mustafaozhan.github.com.cocktailstore.model.DetailedCocktail
 import mustafaozhan.github.com.cocktailstore.model.Drink
 import mustafaozhan.github.com.cocktailstore.ui.activities.CocktailsDetailActivity
 
 /**
  * Created by Mustafa Ozhan on 8/11/17 at 11:15 PM on Arch Linux.
  */
-class MyCocktailAdapter(var cocktailList: List<Drink>?) :
-        RecyclerView.Adapter<MyCocktailAdapter.ViewHolder>() {
+class MyDetailedCocktailAdapter(var cocktailList: List<DetailedCocktail>?) :
+        RecyclerView.Adapter<MyDetailedCocktailAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_row, parent, false)
@@ -28,12 +29,11 @@ class MyCocktailAdapter(var cocktailList: List<Drink>?) :
 
     }
 
-
     override fun getItemCount() = cocktailList!!.size
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bindCocktail(cocktail: Drink) {
+        fun bindCocktail(cocktail: DetailedCocktail) {
 
             itemView.mTxtName.text = cocktail.strDrink
 
@@ -52,7 +52,7 @@ class MyCocktailAdapter(var cocktailList: List<Drink>?) :
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, CocktailsDetailActivity::class.java)
 
-                intent.putExtra("cocktail",cocktail)
+                intent.putExtra("cocktail",cocktail.strDrink)
                 itemView.context.startActivity(intent)
             }
         }
