@@ -82,93 +82,110 @@ class SearchByFragment : Fragment() {
                     text ->
 
 
-                    mProgressBarSearchBy.progress
-
-                    when (mSpinner.selectedItem) {
-                        "By Name" -> {
-                            val myCall = apiService.getInCocktailsByName(text)
-                            myCall.enqueue(object : Callback<DetailedResponseModel> {
-                                override fun onResponse(call: Call<DetailedResponseModel>?, response: Response<DetailedResponseModel>?) {
-                                    try {
-                                        myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
+                    try {
 
 
-                                        val mCocktailAdapter = MyDetailedCocktailAdapter(response!!.body()!!.drinks!!)
-                                        myRecyclerViewSearchBy.adapter = mCocktailAdapter
-                                    } catch (e: Exception) {
+                        when (mSpinner.selectedItem) {
+                            "By Name" -> {
+                                val myCall = apiService.getInCocktailsByName(text)
+                                myCall.enqueue(object : Callback<DetailedResponseModel> {
+                                    override fun onResponse(call: Call<DetailedResponseModel>?, response: Response<DetailedResponseModel>?) {
+                                        try {
+                                            mProgressBarSearchBy.progress
+                                            myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
+
+
+                                            val mCocktailAdapter = MyDetailedCocktailAdapter(response!!.body()!!.drinks!!)
+                                            myRecyclerViewSearchBy.adapter = mCocktailAdapter
+                                        } catch (e: Exception) {
+                                            Log.w("Warning", "No Cocktail founded")
+                                            Toast.makeText(context, "No Cocktail founded", Toast.LENGTH_SHORT).show()
+                                            try {
+
+
+                                                val emptyList = ArrayList<DetailedCocktail>()
+                                                val mCocktailAdapter = MyDetailedCocktailAdapter(emptyList)
+                                                myRecyclerViewSearchBy.adapter = mCocktailAdapter
+                                                mProgressBarSearchBy.visibility = View.GONE
+                                            } catch (e: Exception) {
+                                                Log.e("Error:", "java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
+                                                //it is happening only if i switch tabs so quick and at least 20-30 times non-stop when i was testing i realized
+                                            }
+                                        }
+
+                                    }
+
+                                    override fun onFailure(call: Call<DetailedResponseModel>?, t: Throwable?) {
                                         Log.w("Warning", "No Cocktail founded")
                                         Toast.makeText(context, "No Cocktail founded", Toast.LENGTH_SHORT).show()
                                         try {
-
-
                                             val emptyList = ArrayList<DetailedCocktail>()
                                             val mCocktailAdapter = MyDetailedCocktailAdapter(emptyList)
                                             myRecyclerViewSearchBy.adapter = mCocktailAdapter
-                                            mProgressBarSearchBy.visibility = View.GONE
                                         } catch (e: Exception) {
                                             Log.e("Error:", "java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
                                             //it is happening only if i switch tabs so quick and at least 20-30 times non-stop when i was testing i realized
                                         }
                                     }
+                                })
 
-                                }
+                            }
 
-                                override fun onFailure(call: Call<DetailedResponseModel>?, t: Throwable?) {
-                                    Log.w("Warning", "No Cocktail founded")
-                                    Toast.makeText(context, "No Cocktail founded", Toast.LENGTH_SHORT).show()
-                                    try {
-                                        val emptyList = ArrayList<DetailedCocktail>()
-                                        val mCocktailAdapter = MyDetailedCocktailAdapter(emptyList)
-                                        myRecyclerViewSearchBy.adapter = mCocktailAdapter
-                                    } catch (e: Exception) {
-                                        Log.e("Error:", "java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
-                                        //it is happening only if i switch tabs so quick and at least 20-30 times non-stop when i was testing i realized
+
+                            "By Ingredient" -> {
+                                val myCall = apiService.getCocktailsByIngredient(text)
+                                myCall.enqueue(object : Callback<ResponseModel> {
+                                    override fun onResponse(call: Call<ResponseModel>?, response: Response<ResponseModel>?) {
+                                        try {
+                                            mProgressBarSearchBy.progress
+                                            myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+
+                                            val mCocktailAdapter = MyCocktailAdapter(response!!.body()!!.drinks!!)
+                                            myRecyclerViewSearchBy.adapter = mCocktailAdapter
+                                        } catch (e: Exception) {
+                                            Log.w("Warning", "No Cocktail founded")
+                                            Toast.makeText(context, "No Cocktail founded", Toast.LENGTH_SHORT).show()
+
+                                            try {
+
+
+                                                val emptyList = ArrayList<Drink>()
+                                                val mCocktailAdapter = MyCocktailAdapter(emptyList)
+                                                myRecyclerViewSearchBy.adapter = mCocktailAdapter
+                                                mProgressBarSearchBy.visibility = View.GONE
+                                            } catch (e: Exception) {
+                                                Log.e("Error:", "java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
+                                                //it is happening only if i switch tabs so quick and at least 20-30 times non-stop when i was testing i realized
+                                            }
+                                        }
+
                                     }
-                                }
-                            })
 
-                        }
-
-
-                        "By Ingredient" -> {
-                            val myCall = apiService.getCocktailsByIngredient(text)
-                            myCall.enqueue(object : Callback<ResponseModel> {
-                                override fun onResponse(call: Call<ResponseModel>?, response: Response<ResponseModel>?) {
-                                    try {
-                                        myRecyclerViewSearchBy.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
-
-                                        val mCocktailAdapter = MyCocktailAdapter(response!!.body()!!.drinks!!)
-                                        myRecyclerViewSearchBy.adapter = mCocktailAdapter
-                                    } catch (e: Exception) {
-                                        Log.w("Warning", "No Cocktail founded")
-                                        Toast.makeText(context, "No Cocktail founded", Toast.LENGTH_SHORT).show()
+                                    override fun onFailure(call: Call<ResponseModel>?, t: Throwable?) {
 
                                         try {
 
 
+                                            Log.w("Warning", "No Cocktail founded")
+                                            Toast.makeText(context, "No Cocktail founded", Toast.LENGTH_SHORT).show()
                                             val emptyList = ArrayList<Drink>()
                                             val mCocktailAdapter = MyCocktailAdapter(emptyList)
                                             myRecyclerViewSearchBy.adapter = mCocktailAdapter
-                                            mProgressBarSearchBy.visibility = View.GONE
                                         } catch (e: Exception) {
                                             Log.e("Error:", "java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
                                             //it is happening only if i switch tabs so quick and at least 20-30 times non-stop when i was testing i realized
                                         }
                                     }
+                                })
 
-                                }
 
-                                override fun onFailure(call: Call<ResponseModel>?, t: Throwable?) {
-                                    Log.w("Warning", "No Cocktail founded")
-                                    Toast.makeText(context, "No Cocktail founded", Toast.LENGTH_SHORT).show()
-                                    val emptyList = ArrayList<Drink>()
-                                    val mCocktailAdapter = MyCocktailAdapter(emptyList)
-                                    myRecyclerViewSearchBy.adapter = mCocktailAdapter
-                                }
-                            })
+                            }
 
 
                         }
+                    } catch (e: Exception) {
+                        Log.e("Error", "java.lang.IllegalStateException: Exception thrown on Scheduler.Worker thread. Add `onError` handling.\n" +
+                                "                      at rx.android.schedulers.LooperScheduler$/ScheduledAction.run(LooperScheduler.java:112)")
                     }
 
 
