@@ -10,18 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Toast
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_cocktails_detail.*
-import kotlinx.android.synthetic.main.fragment_alcoholic.*
 import kotlinx.android.synthetic.main.fragment_random_cocktail.*
-import kotlinx.android.synthetic.main.fragment_search_by.*
 import mustafaozhan.github.com.cocktailstore.R
+import mustafaozhan.github.com.cocktailstore.extensions.setBackgroundFromUrl
 import mustafaozhan.github.com.cocktailstore.model.*
 import mustafaozhan.github.com.cocktailstore.rest.ApiClient
 import mustafaozhan.github.com.cocktailstore.rest.ApiInterface
-import mustafaozhan.github.com.cocktailstore.ui.adapters.MyCocktailAdapter
-import mustafaozhan.github.com.cocktailstore.ui.adapters.MyDetailedCocktailAdapter
 import mustafaozhan.github.com.recipestore.ui.adapters.MyRecipeAdapter
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,7 +42,7 @@ class RandomCocktailFragment : Fragment() {
         var firstTime = true
 
         if (firstTime) {
-            firstTime=false
+            firstTime = false
             getRandomCocktail()
         }
         mBtnRandom.setOnClickListener { getRandomCocktail() }
@@ -73,14 +67,7 @@ class RandomCocktailFragment : Fragment() {
 
 
                     if (cocktail.strDrinkThumb != null)
-                        Glide
-                                .with(context)
-                                .load(cocktail.strDrinkThumb)
-                                .thumbnail(Glide
-                                        .with(context)
-                                        .load(cocktail.strDrinkThumb)
-                                )
-                                .into(mImgCocktailRandomDetails)
+                        mImgCocktailRandomDetails.setBackgroundFromUrl(cocktail.strDrinkThumb.toString())
                     else
                         mImgCocktailRandomDetails.setImageResource(R.drawable.no_image)
 

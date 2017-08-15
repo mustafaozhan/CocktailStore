@@ -6,11 +6,10 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-
 /**
  * Created by Mustafa Ozhan on 8/11/17 at 10:42 PM on Arch Linux.
  */
-open class Drink() :Parcelable {
+open class Drink() : Parcelable {
 
     @SerializedName("strDrink")
     @Expose

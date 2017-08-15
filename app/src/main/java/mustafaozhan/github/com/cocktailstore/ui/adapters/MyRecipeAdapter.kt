@@ -5,13 +5,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_row.view.*
 import mustafaozhan.github.com.cocktailstore.R
+import mustafaozhan.github.com.cocktailstore.extensions.setBackgroundFromUrl
 import mustafaozhan.github.com.cocktailstore.model.Recipe
-import mustafaozhan.github.com.cocktailstore.ui.activities.CocktailsDetailActivity
 import mustafaozhan.github.com.cocktailstore.ui.activities.IngredientDetailActivity
-import java.lang.reflect.Array
 
 
 /**
@@ -27,7 +25,7 @@ class MyRecipeAdapter(val recipeList: ArrayList<Recipe>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       if(recipeList[position].ingredient!="") {
+        if (recipeList[position].ingredient != "") {
             holder.bindRecipe(recipeList[position])
 
         }
@@ -40,18 +38,11 @@ class MyRecipeAdapter(val recipeList: ArrayList<Recipe>) :
         fun bindRecipe(recipe: Recipe) {
 
             if (recipe.measure != null)
-                itemView.mTxtName.text = recipe.ingredient+"  "+recipe.measure
+                itemView.mTxtName.text = recipe.ingredient + "  " + recipe.measure
 
 
             if (recipe.ingredient != "")
-                Glide
-                        .with(itemView.context)
-                        .load("http://www.thecocktaildb.com/images/ingredients/${recipe.ingredient}-Small.png")
-                        .thumbnail(Glide
-                                .with(itemView.context)
-                                .load("http://www.thecocktaildb.com/images/ingredients/${recipe.ingredient}-Small.png")
-                        )
-                        .into(itemView.mImgCocktail)
+                itemView.mImgCocktail.setBackgroundFromUrl("http://www.thecocktaildb.com/images/ingredients/${recipe.ingredient}-Small.png")
             else
                 itemView.mImgCocktail.setImageResource(R.drawable.no_image)
 
@@ -60,7 +51,7 @@ class MyRecipeAdapter(val recipeList: ArrayList<Recipe>) :
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, IngredientDetailActivity::class.java)
 
-                intent.putExtra("ingredient",recipe.ingredient)
+                intent.putExtra("ingredient", recipe.ingredient)
                 itemView.context.startActivity(intent)
             }
 

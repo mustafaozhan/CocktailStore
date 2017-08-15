@@ -2,13 +2,10 @@ package mustafaozhan.github.com.cocktailstore.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_cocktails_detail.*
 import kotlinx.android.synthetic.main.activity_ingredient_detail.*
 
 import mustafaozhan.github.com.cocktailstore.R
-import mustafaozhan.github.com.cocktailstore.model.DetailedResponseModel
-import mustafaozhan.github.com.cocktailstore.model.Recipe
+import mustafaozhan.github.com.cocktailstore.extensions.setBackgroundFromUrl
 import mustafaozhan.github.com.cocktailstore.model.ResponseIngredinets
 import mustafaozhan.github.com.cocktailstore.rest.ApiClient
 import mustafaozhan.github.com.cocktailstore.rest.ApiInterface
@@ -29,14 +26,7 @@ class IngredientDetailActivity : AppCompatActivity() {
         mTxtIngredientName.text = ingredient.toString()
 
         if (ingredient != null)
-            Glide
-                    .with(applicationContext)
-                    .load("http://www.thecocktaildb.com/images/ingredients/$ingredient-Medium.png")
-                    .thumbnail(Glide
-                            .with(applicationContext)
-                            .load("http://www.thecocktaildb.com/images/ingredients/$ingredient-Medium.png")
-                    )
-                    .into(mImgIngredientDetails)
+            mImgIngredientDetails.setBackgroundFromUrl("http://www.thecocktaildb.com/images/ingredients/$ingredient-Medium.png")
         else
             mImgIngredientDetails.setImageResource(R.drawable.no_image)
 
@@ -48,7 +38,7 @@ class IngredientDetailActivity : AppCompatActivity() {
 
                 val info = response!!.body()!!.ingredients?.get(0)?.strDescription
 
-                if (info == "null"||info==null)
+                if (info == "null" || info == null)
                     mTxtIngredientInformation.text = "No information specified"
                 else
                     mTxtIngredientInformation.text = info

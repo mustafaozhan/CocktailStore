@@ -4,7 +4,6 @@ package mustafaozhan.github.com.cocktailstore.ui.adapters
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
 
 /**
  * Created by Mustafa Ozhan on 8/11/17 at 2:35 PM on Arch Linux.
@@ -33,7 +32,6 @@ class MyViewPagerAdapter internal constructor(manager: FragmentManager) : Fragme
         return mFragmentTitleList[position]
 
     }
-
 
 
 }

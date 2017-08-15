@@ -57,8 +57,8 @@ class AlcoholicFragment : Fragment() {
                     val adapter = MyCocktailAdapter(response!!.body()!!.drinks!!)
                     myRecyclerViewAlcoholic.adapter = adapter
                     mProgressBarAlcoholic.visibility = View.GONE
-                }catch (e:Exception){
-                    Log.e("Error:","java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
+                } catch (e: Exception) {
+                    Log.e("Error:", "java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager(android.support.v7.widget.RecyclerView$/LayoutManager)' on a null object reference")
                     //it is happening only if i switch tabs so quick and at least 20-30 times non-stop when i was testing i realized
                 }
             }

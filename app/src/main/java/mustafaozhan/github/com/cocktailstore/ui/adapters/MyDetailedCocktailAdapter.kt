@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_row.view.*
 import mustafaozhan.github.com.cocktailstore.R
+import mustafaozhan.github.com.cocktailstore.extensions.setBackgroundFromUrl
 import mustafaozhan.github.com.cocktailstore.model.DetailedCocktail
 import mustafaozhan.github.com.cocktailstore.model.Drink
 import mustafaozhan.github.com.cocktailstore.ui.activities.CocktailsDetailActivity
@@ -38,21 +38,14 @@ class MyDetailedCocktailAdapter(var cocktailList: List<DetailedCocktail>?) :
             itemView.mTxtName.text = cocktail.strDrink
 
             if (cocktail.strDrinkThumb != null)
-                Glide
-                        .with(itemView.context)
-                        .load(cocktail.strDrinkThumb)
-                        .thumbnail(Glide
-                                .with(itemView.context)
-                                .load(cocktail.strDrinkThumb)
-                        )
-                        .into(itemView.mImgCocktail)
+                itemView.mImgCocktail.setBackgroundFromUrl(cocktail.strDrinkThumb.toString())
             else
                 itemView.mImgCocktail.setImageResource(R.drawable.no_image)
 
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, CocktailsDetailActivity::class.java)
 
-                intent.putExtra("cocktail",cocktail as Drink)//bec cocktail details waiting for a drink object
+                intent.putExtra("cocktail", cocktail as Drink)//bec cocktail details waiting for a drink object
                 itemView.context.startActivity(intent)
             }
         }
