@@ -1,6 +1,7 @@
 # CocktailStore
 
 An application for listing all alcoholic and non alcoholic cocktails and their recipes.
+
 <a href="https://play.google.com/store/apps/details?id=mustafaozhan.github.com.cocktailstore">Google Play Store</a>
 
 <img src="https://s19.postimg.org/hxb5su9ur/device-2017-08-13-203940.png" width="200px" /> <img src="https://s19.postimg.org/terikapur/device-2017-08-13-204005.png" width="200px" />
