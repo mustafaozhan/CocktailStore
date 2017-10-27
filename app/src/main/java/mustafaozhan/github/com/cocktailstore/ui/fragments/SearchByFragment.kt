@@ -27,9 +27,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import mustafaozhan.github.com.cocktailstore.ui.adapters.MyCocktailAdapter
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
-import kotlinx.android.synthetic.main.fragment_search_by.view.*
 import mustafaozhan.github.com.cocktailstore.model.DetailedCocktail
 import mustafaozhan.github.com.cocktailstore.model.DetailedResponseModel
 import mustafaozhan.github.com.cocktailstore.ui.adapters.MyDetailedCocktailAdapter
@@ -78,8 +75,7 @@ class SearchByFragment : Fragment() {
             })
         }).debounce(500, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    text ->
+                .subscribe({ text ->
 
 
                     try {
@@ -190,10 +186,6 @@ class SearchByFragment : Fragment() {
 
 
                 })
-    }
-
-    private fun clearAdapter() {
-
     }
 
 

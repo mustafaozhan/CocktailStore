@@ -9,7 +9,6 @@ import mustafaozhan.github.com.cocktailstore.R
 import mustafaozhan.github.com.cocktailstore.ui.adapters.MyViewPagerAdapter
 import mustafaozhan.github.com.cocktailstore.ui.fragments.AlcoholicFragment
 import mustafaozhan.github.com.cocktailstore.ui.fragments.NonAlcoholicFragment
-import android.content.Intent
 import mustafaozhan.github.com.cocktailstore.ui.fragments.RandomCocktailFragment
 import mustafaozhan.github.com.cocktailstore.ui.fragments.SearchByFragment
 

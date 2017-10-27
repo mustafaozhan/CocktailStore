@@ -32,8 +32,8 @@
                 android:layout_height="160sp"
                 android:layout_centerHorizontal="true"
                 android:paddingTop="10sp"
-                app:border_color="@color/colorAccent"
-                app:border_width="1sp" />
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="1sp" />
         </RelativeLayout>
 
         <TextView

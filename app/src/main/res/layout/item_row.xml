@@ -19,8 +19,9 @@
             android:layout_height="48sp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            app:border_color="@color/colorAccent"
-            app:border_width="1sp" />
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="1sp"
+            android:layout_alignParentStart="true" />
 
 
         <TextView
@@ -31,7 +32,8 @@
             android:layout_toEndOf="@+id/mImgCocktail"
             android:layout_toRightOf="@+id/mImgCocktail"
             android:paddingLeft="10sp"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:paddingStart="10sp" />
     </RelativeLayout>
 
     <View
@@ -40,7 +42,8 @@
         android:layout_alignLeft="@+id/myRelativeLayout"
         android:layout_below="@+id/myRelativeLayout"
         android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorPrimary"
+        android:layout_alignStart="@+id/myRelativeLayout" />
 
 
 </RelativeLayout>
