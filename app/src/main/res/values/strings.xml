@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CocktailStore</string>
+    <string name="random_cocktail">Random Cocktail</string>
+    <string name="new_random_cocktail">New Random Cocktail</string>
 </resources>

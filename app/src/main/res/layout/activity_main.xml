@@ -27,7 +27,7 @@
                 android:gravity="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="@color/white"
-                android:text="Random Cocktail" />
+                android:text="@string/random_cocktail" />
 
         </android.support.v7.widget.Toolbar>
         <!--app:layout_scrollFlags="scroll|enterAlways"-->

@@ -15,10 +15,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="New Random Cocktail" />
+            android:text="@string/new_random_cocktail" />
 
         <RelativeLayout
-            android:id="@+id/myRelativeLayoutRandomdFragment"
+            android:id="@+id/myRelativeLayoutRandomFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/myRelativeLayoutRandomdFragment"
+            android:layout_below="@+id/myRelativeLayoutRandomFragment"
             android:gravity="center"
             android:padding="5sp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
