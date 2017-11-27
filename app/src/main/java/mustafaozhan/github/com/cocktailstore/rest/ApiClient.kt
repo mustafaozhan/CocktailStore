@@ -11,16 +11,13 @@ class ApiClient {
 
     companion object {
         fun get(): Retrofit {
-
-            val retrofit = Retrofit.Builder()
+            return Retrofit.Builder()
                     .addCallAdapterFactory(
                             RxJava2CallAdapterFactory.create())
                     .addConverterFactory(
                             GsonConverterFactory.create())
                     .baseUrl("http://www.thecocktaildb.com/api/json/v1/1/")
                     .build()
-
-            return retrofit
         }
     }
 }

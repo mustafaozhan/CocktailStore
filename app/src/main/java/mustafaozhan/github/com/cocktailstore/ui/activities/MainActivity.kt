@@ -1,5 +1,6 @@
 package mustafaozhan.github.com.cocktailstore.ui.activities
 
+import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
             }
 
+            @SuppressLint("SetTextI18n")
             override fun onPageSelected(position: Int) {
                 when (position) {
                     0 -> toolbar_title.text = "Random Cocktails"

@@ -16,7 +16,7 @@ import mustafaozhan.github.com.cocktailstore.extensions.setBackgroundFromUrl
 import mustafaozhan.github.com.cocktailstore.model.*
 import mustafaozhan.github.com.cocktailstore.rest.ApiClient
 import mustafaozhan.github.com.cocktailstore.rest.ApiInterface
-import mustafaozhan.github.com.recipestore.ui.adapters.MyRecipeAdapter
+import mustafaozhan.github.com.cocktailstore.ui.adapters.MyRecipeAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,9 +27,9 @@ import retrofit2.Response
 class RandomCocktailFragment : Fragment() {
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val fragmentView = inflater!!.inflate(R.layout.fragment_random_cocktail, container, false)
-        activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val fragmentView = inflater.inflate(R.layout.fragment_random_cocktail, container, false)
+        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 //        bindViews(fragmentView)
         return fragmentView
     }

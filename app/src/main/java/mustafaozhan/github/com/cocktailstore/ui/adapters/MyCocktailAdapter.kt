@@ -14,7 +14,7 @@ import mustafaozhan.github.com.cocktailstore.ui.activities.CocktailsDetailActivi
 /**
  * Created by Mustafa Ozhan on 8/11/17 at 11:15 PM on Arch Linux.
  */
-class MyCocktailAdapter(var cocktailList: List<Drink>?) :
+class MyCocktailAdapter(private var cocktailList: List<Drink>?) :
         RecyclerView.Adapter<MyCocktailAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

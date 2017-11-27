@@ -8,7 +8,6 @@ import com.google.gson.annotations.SerializedName
  * Created by Mustafa Ozhan on 8/13/17 at 12:55 AM on Arch Linux.
  */
 class Ingredient {
-
     @SerializedName("idIngredient")
     @Expose
     var idIngredient: String? = null
@@ -21,5 +20,4 @@ class Ingredient {
     @SerializedName("strType")
     @Expose
     var strType: String? = null
-
 }

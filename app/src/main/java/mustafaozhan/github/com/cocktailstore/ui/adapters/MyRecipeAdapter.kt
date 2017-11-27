@@ -1,5 +1,6 @@
-package mustafaozhan.github.com.recipestore.ui.adapters
+package mustafaozhan.github.com.cocktailstore.ui.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -15,7 +16,7 @@ import mustafaozhan.github.com.cocktailstore.ui.activities.IngredientDetailActiv
 /**
  * Created by Mustafa Ozhan on 8/11/17 at 11:15 PM on Arch Linux.
  */
-class MyRecipeAdapter(val recipeList: ArrayList<Recipe>) :
+class MyRecipeAdapter(private val recipeList: ArrayList<Recipe>) :
         RecyclerView.Adapter<MyRecipeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,9 +36,10 @@ class MyRecipeAdapter(val recipeList: ArrayList<Recipe>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+        @SuppressLint("SetTextI18n")
         fun bindRecipe(recipe: Recipe) {
 
-            if (recipe.measure != null)
+            if (recipe.measure != "")
                 itemView.mTxtName.text = recipe.ingredient + "  " + recipe.measure
 
 

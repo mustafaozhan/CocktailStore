@@ -27,9 +27,9 @@ import mustafaozhan.github.com.cocktailstore.ui.adapters.MyCocktailAdapter
 class AlcoholicFragment : Fragment() {
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val fragmentView = inflater!!.inflate(R.layout.fragment_alcoholic, container, false)
-        activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val fragmentView = inflater.inflate(R.layout.fragment_alcoholic, container, false)
+        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         return fragmentView
     }
@@ -51,7 +51,6 @@ class AlcoholicFragment : Fragment() {
             override fun onResponse(call: Call<ResponseModel>?, response: Response<ResponseModel>?) {
 
                 try {
-
 
                     myRecyclerViewAlcoholic.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
                     val adapter = MyCocktailAdapter(response!!.body()!!.drinks!!)

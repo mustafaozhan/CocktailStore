@@ -38,9 +38,9 @@ import mustafaozhan.github.com.cocktailstore.ui.adapters.MyDetailedCocktailAdapt
 class SearchByFragment : Fragment() {
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val fragmentView = inflater!!.inflate(R.layout.fragment_search_by, container, false)
-        activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val fragmentView = inflater.inflate(R.layout.fragment_search_by, container, false)
+        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 //        bindViews(fragmentView)
         return fragmentView
     }

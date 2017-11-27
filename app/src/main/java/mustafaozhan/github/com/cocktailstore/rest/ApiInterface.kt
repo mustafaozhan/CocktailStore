@@ -33,6 +33,4 @@ interface ApiInterface {
 
     @GET("random.php")
     fun getRandomCocktail(): Call<DetailedResponseModel>
-
-
 }

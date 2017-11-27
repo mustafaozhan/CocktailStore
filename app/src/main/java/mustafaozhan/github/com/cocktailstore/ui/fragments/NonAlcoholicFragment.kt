@@ -25,9 +25,9 @@ import retrofit2.Response
  */
 class NonAlcoholicFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val fragmentView = inflater!!.inflate(R.layout.fragment_non_alcoholic, container, false)
-        activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val fragmentView = inflater.inflate(R.layout.fragment_non_alcoholic, container, false)
+        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         return fragmentView
     }

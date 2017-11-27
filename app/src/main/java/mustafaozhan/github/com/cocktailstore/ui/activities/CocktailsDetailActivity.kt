@@ -13,7 +13,7 @@ import mustafaozhan.github.com.cocktailstore.model.Drink
 import mustafaozhan.github.com.cocktailstore.model.Recipe
 import mustafaozhan.github.com.cocktailstore.rest.ApiClient
 import mustafaozhan.github.com.cocktailstore.rest.ApiInterface
-import mustafaozhan.github.com.recipestore.ui.adapters.MyRecipeAdapter
+import mustafaozhan.github.com.cocktailstore.ui.adapters.MyRecipeAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,32 +37,32 @@ class CocktailsDetailActivity : AppCompatActivity() {
         val myCall = apiService.getById(cocktail.idDrink!!)
         myCall.enqueue(object : Callback<DetailedResponseModel> {
             override fun onResponse(call: Call<DetailedResponseModel>?, response: Response<DetailedResponseModel>?) {
-                val myCoctail = response!!.body()!!.drinks!![0]
+                val myCocktail = response!!.body()!!.drinks!![0]
 
                 if (cocktail.strDrinkThumb != null)
                     mImgCocktailDetails.setBackgroundFromUrl(cocktail.strDrinkThumb.toString())
                 else
                     mImgCocktailDetails.setImageResource(R.drawable.no_image)
 
-                mTxtInformation.text = myCoctail.strInstructions
+                mTxtInformation.text = myCocktail.strInstructions
 
                 val recipeList = ArrayList<Recipe>()
 
-                recipeList.add(Recipe(myCoctail.strIngredient1!!, myCoctail.strMeasure1!!))
-                recipeList.add(Recipe(myCoctail.strIngredient2!!, myCoctail.strMeasure2!!))
-                recipeList.add(Recipe(myCoctail.strIngredient3!!, myCoctail.strMeasure3!!))
-                recipeList.add(Recipe(myCoctail.strIngredient4!!, myCoctail.strMeasure4!!))
-                recipeList.add(Recipe(myCoctail.strIngredient5!!, myCoctail.strMeasure5!!))
-                recipeList.add(Recipe(myCoctail.strIngredient6!!, myCoctail.strMeasure6!!))
-                recipeList.add(Recipe(myCoctail.strIngredient7!!, myCoctail.strMeasure7!!))
-                recipeList.add(Recipe(myCoctail.strIngredient8!!, myCoctail.strMeasure8!!))
-                recipeList.add(Recipe(myCoctail.strIngredient9!!, myCoctail.strMeasure9!!))
-                recipeList.add(Recipe(myCoctail.strIngredient10!!, myCoctail.strMeasure10!!))
-                recipeList.add(Recipe(myCoctail.strIngredient11!!, myCoctail.strMeasure11!!))
-                recipeList.add(Recipe(myCoctail.strIngredient12!!, myCoctail.strMeasure12!!))
-                recipeList.add(Recipe(myCoctail.strIngredient13!!, myCoctail.strMeasure13!!))
-                recipeList.add(Recipe(myCoctail.strIngredient14!!, myCoctail.strMeasure14!!))
-                recipeList.add(Recipe(myCoctail.strIngredient15!!, myCoctail.strMeasure15!!))
+                recipeList.add(Recipe(myCocktail.strIngredient1!!, myCocktail.strMeasure1!!))
+                recipeList.add(Recipe(myCocktail.strIngredient2!!, myCocktail.strMeasure2!!))
+                recipeList.add(Recipe(myCocktail.strIngredient3!!, myCocktail.strMeasure3!!))
+                recipeList.add(Recipe(myCocktail.strIngredient4!!, myCocktail.strMeasure4!!))
+                recipeList.add(Recipe(myCocktail.strIngredient5!!, myCocktail.strMeasure5!!))
+                recipeList.add(Recipe(myCocktail.strIngredient6!!, myCocktail.strMeasure6!!))
+                recipeList.add(Recipe(myCocktail.strIngredient7!!, myCocktail.strMeasure7!!))
+                recipeList.add(Recipe(myCocktail.strIngredient8!!, myCocktail.strMeasure8!!))
+                recipeList.add(Recipe(myCocktail.strIngredient9!!, myCocktail.strMeasure9!!))
+                recipeList.add(Recipe(myCocktail.strIngredient10!!, myCocktail.strMeasure10!!))
+                recipeList.add(Recipe(myCocktail.strIngredient11!!, myCocktail.strMeasure11!!))
+                recipeList.add(Recipe(myCocktail.strIngredient12!!, myCocktail.strMeasure12!!))
+                recipeList.add(Recipe(myCocktail.strIngredient13!!, myCocktail.strMeasure13!!))
+                recipeList.add(Recipe(myCocktail.strIngredient14!!, myCocktail.strMeasure14!!))
+                recipeList.add(Recipe(myCocktail.strIngredient15!!, myCocktail.strMeasure15!!))
 
                 var size = recipeList.size
                 var i = 0

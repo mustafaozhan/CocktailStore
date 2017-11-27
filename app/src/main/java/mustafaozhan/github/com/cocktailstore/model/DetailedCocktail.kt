@@ -11,20 +11,15 @@ import com.google.gson.annotations.SerializedName
  */
 class DetailedCocktail() : Drink(), Parcelable {
 
-
     @SerializedName("strCategory")
-    @Expose
-    var strCategory: String? = null
+    @Expose private var strCategory: String? = null
     @SerializedName("strAlcoholic")
-    @Expose
-    var strAlcoholic: String? = null
+    @Expose private var strAlcoholic: String? = null
     @SerializedName("strGlass")
-    @Expose
-    var strGlass: String? = null
+    @Expose private var strGlass: String? = null
     @SerializedName("strInstructions")
     @Expose
     var strInstructions: String? = null
-
     @SerializedName("strIngredient1")
     @Expose
     var strIngredient1: String? = null

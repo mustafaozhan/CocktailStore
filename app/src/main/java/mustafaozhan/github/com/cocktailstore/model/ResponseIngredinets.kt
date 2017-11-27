@@ -8,9 +8,7 @@ import com.google.gson.annotations.SerializedName
  */
 
 class ResponseIngredinets {
-
     @SerializedName("ingredients")
     @Expose
     var ingredients: List<Ingredient>? = null
-
 }
